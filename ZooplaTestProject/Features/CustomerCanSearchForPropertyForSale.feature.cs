@@ -131,7 +131,7 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void CustomerCanSearchForAnyPropertiesForSale_Manchester()
         {
 #line 6
-this.CustomerCanSearchForAnyPropertiesForSale("Manchester", "£120,000", "£230,000", "Houses", "3+", "Houses", ((string[])(null)));
+this.CustomerCanSearchForAnyPropertiesForSale("Manchester", "£120,000", "£230,000", "Houses", "3+", "Property", ((string[])(null)));
 #line hidden
         }
         
