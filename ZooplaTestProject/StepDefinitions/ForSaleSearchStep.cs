@@ -11,6 +11,8 @@ namespace ZooplaTestProject.StepDefinitions
     public sealed class ForSaleSearchStep : BasePage
     {
         HomePage homePage = new HomePage(_driver);
+        SearchResultPage searchResultPage = new SearchResultPage(_driver);
+        ProductDetailsPage productDetailsPage = new ProductDetailsPage(_driver);
 
         [Given(@"I navigate to zoopla homepage")]
         public void GivenINavigateToZooplaHomepage()
@@ -25,9 +27,9 @@ namespace ZooplaTestProject.StepDefinitions
         }
 
         [When(@"I select ""(.*)"" from Min price dropdown")]
-        public void WhenISelectFromMinPriceDropdown(string p0)
+        public void WhenISelectFromMinPriceDropdown(string minPrice)
         {
-
+            homePage.SelectMinimumPrice(minPrice);
         }
 
         [When(@"I select ""(.*)"" from Max price dropdown")]
@@ -51,19 +53,20 @@ namespace ZooplaTestProject.StepDefinitions
         [When(@"I click on Search button")]
         public void WhenIClickOnSearchButton()
         {
-
+            searchResultPage = homePage.ClickOnSearchButton();
         }
 
         [Then(@"a list of ""(.*)"" in ""(.*)"" are displayed")]
-        public void ThenAListOfInAreDisplayed(string p0, string p1)
+        public void ThenAListOfInAreDisplayed(string property, string location)
         {
-
+            searchResultPage.IsPageTitleDisplayedCorrectly(property, location);
+            searchResultPage.IsResultDisplayed();
         }
 
         [Then(@"I click on any of the result to view more detail")]
         public void ThenIClickOnAnyOfTheResultToViewMoreDetail()
         {
-
+            productDetailsPage = searchResultPage.ClickOnAnyResult();
         }
 
     }
