@@ -53,5 +53,12 @@ namespace ZooplaTestProject.Commons
                                 = TimeSpan.FromSeconds(30);
 
         }
+
+        public void CloseBrowser()
+        {
+            _driver.Manage().Cookies.DeleteAllCookies();
+            _driver.Quit();
+
+        }
     }
 }
